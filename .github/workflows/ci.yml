@@ -1,0 +1,11 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y libpng-dev qtbase5-dev xvfb
+      - run: make all
+      # unit/golden tests, the batch on generated images, and a GUI smoke run under xvfb
+      - run: make test
