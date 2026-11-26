@@ -1,0 +1,10 @@
+# build output
+procimg
+build/
+*.o
+moc_*
+# files written at run time
+.temp.png
+.edited.png
+sumlena.png
+.DS_Store
