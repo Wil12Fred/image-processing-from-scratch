@@ -6,7 +6,7 @@ moc_*
 # files written at run time
 .temp.png
 .edited.png
-sumlena.png
+/sumlena.png
 .DS_Store
 tests/test_filters
 tests/run/
