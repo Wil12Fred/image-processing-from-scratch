@@ -10,6 +10,16 @@
 #include "functions_png.h"
 
 int main(int argc, char *argv[]) {
+	// las cuatro imagenes de entrada deben estar en el directorio actual
+	const char* entradas[] = {"camahorizontal.png", "camavertical.png", "cama45p.png", "cama45n.png"};
+	for (int i = 0; i < 4; i++) {
+		if (!load_file(entradas[i])) {
+			fprintf(stderr, "procimg: cannot read %s; the batch needs camahorizontal.png, "
+					"camavertical.png, cama45p.png and cama45n.png (8-bit RGB/RGBA PNGs) "
+					"in the current directory\n", entradas[i]);
+			return 1;
+		}
+	}
 	load_file("camahorizontal.png");
 	to_white_and_black();
 	sum("camavertical.png");
