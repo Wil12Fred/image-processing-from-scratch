@@ -1,4 +1,6 @@
-# Procesamiento de Imágenes
+# image-processing-from-scratch
+
+> Procesamiento de Imágenes
 
 Image-processing algorithms implemented from scratch in C++ on top of libpng, for an
 image-processing course (2019). The repository has two programs over the same header-only
