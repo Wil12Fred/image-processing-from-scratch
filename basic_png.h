@@ -24,7 +24,11 @@ void to_grayscale(){
 }
 
 void sum(string st){
+	// load_file reemplaza write_rp con una copia de la imagen nueva:
+	// se conserva el acumulado para sumarle la imagen cargada
+	png_byte ** acumulado = write_rp;
 	load_file(st);
+	write_rp = acumulado;
 	for(int y = 0; y < *height; y++) {
 		png_bytep row = row_pointers[y];
 		png_bytep row2 = write_rp[y];
@@ -166,7 +170,7 @@ void fourier_to_image(/*cpx* y*/){
 }
 
 void print_histogram(std::string file){
-	int F[3][255];
+	int F[3][256];
 	for (int i=0;i<256;i++){
 		F[0][i]=F[1][i]=F[2][i]=0;
 	}
@@ -203,12 +207,12 @@ void print_hsi(std::string file){
 			double g=int(px[1]);
 			double b=int(px[2]);
 			double H;
-			if(((r-g)*(r-g)+(r-b)*(r-b))==0){
+			if(((r-g)*(r-g)+(r-b)*(g-b))==0){
 				H=0;
 			} else {
-				H = acos(((r-g)/2+(r-b))/((r-g)*(r-g)+(r-b)*(r-b)));
+				H = acos(((r-g)+(r-b))/2/sqrt((r-g)*(r-g)+(r-b)*(g-b)));
 			}
-			if(b<=r){
+			if(b<=g){
 			} else {
 				H=2.0*(acos(-1.0))-H;
 			}
