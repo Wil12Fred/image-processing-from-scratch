@@ -8,3 +8,5 @@ moc_*
 .edited.png
 sumlena.png
 .DS_Store
+tests/test_filters
+tests/run/
